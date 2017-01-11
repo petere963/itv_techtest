@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
+import java.util.Optional;
 
 /**
  * A Controller which provides some simple rest functions to test the Checkout
@@ -62,13 +63,20 @@ public class CheckoutController {
     @ResponseBody
     public String setPrice(@RequestParam("sku") String sku,
             @RequestParam("unitPrice") int unitPrice,
-            @RequestParam("specialPrice") int specialPrice,
-            @RequestParam("specialPriceUnits") int specialPriceUnits) {
+            @RequestParam("specialPrice") Optional<String> specialPrice,
+            @RequestParam("specialPriceUnits") Optional<String> specialPriceUnits) {
 
-        PricingRule pricingRule = new PricingRule(new Sku(sku))
-                .withUnitPrice(unitPrice)
-                .withSpecialPrice(specialPrice)
-                .withSpecialPriceUnit(specialPriceUnits);
+	PricingRule pricingRule = new PricingRule(new Sku(sku))
+                .withUnitPrice(unitPrice);
+
+	if(specialPrice.isPresent()) {
+	    pricingRule = pricingRule.withSpecialPrice(Integer.parseInt(specialPrice.get()));
+	}
+	if(specialPriceUnits.isPresent()) {
+	    pricingRule = pricingRule.withSpecialPriceUnit(Integer.parseInt(specialPriceUnits.get()));
+	}
+
+        
         PricingEngine.getInstance().addPricingRule(pricingRule);
 
         return getPricingContent();
