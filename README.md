@@ -15,22 +15,22 @@ http://localhost:8080/pricing
 
 - Set pricing Rules
   - Set a price without overrides
-http://localhost:8080/setPrice?sku=A&unitPrice=20
+    * http://localhost:8080/setPrice?sku=A&unitPrice=20
 
   - Set a price with overrides
-http://localhost:8080/setPrice?sku=A&unitPrice=20&specialPrice=35&specialPriceUnits=2
+    * http://localhost:8080/setPrice?sku=A&unitPrice=20&specialPrice=35&specialPriceUnits=2
 
   -  Scan an Item
-http://localhost:8080/scanItem?sku=A
+    * http://localhost:8080/scanItem?sku=A
 
   - Display the current basket (also returned when item scanned)
-http://localhost:8080/status
+    * http://localhost:8080/status
 
   - Check out process. The final total is displayed along with the basket. The session is reset ready for the next customer.
-http://localhost:8080/checkout
+    * http://localhost:8080/checkout
 
  
 Running from command line
 -------------------------
-java -jar target/itv.checkout-1.0-SNAPSHOT.jar
+* java -jar target/itv.checkout-1.0-SNAPSHOT.jar
 
