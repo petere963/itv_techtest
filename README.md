@@ -14,19 +14,19 @@ Some simple REST services are supplied to demonstrate the functions of the appli
 http://localhost:8080/pricing
 
 - Set pricing Rules
-—- Set a price without overrides
+  - Set a price without overrides
 http://localhost:8080/setPrice?sku=A&unitPrice=20
 
-—- Set a price with overrides
+  - Set a price with overrides
 http://localhost:8080/setPrice?sku=A&unitPrice=20&specialPrice=35&specialPriceUnits=2
 
-—- Scan an Item
+  -  Scan an Item
 http://localhost:8080/scanItem?sku=A
 
-—- Display the current basket (also returned when item scanned)
+  - Display the current basket (also returned when item scanned)
 http://localhost:8080/status
 
-—- Check out process. The final total is displayed along with the basket. The session is reset ready for the next customer.
+  - Check out process. The final total is displayed along with the basket. The session is reset ready for the next customer.
 http://localhost:8080/checkout
 
  
