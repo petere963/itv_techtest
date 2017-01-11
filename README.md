@@ -10,20 +10,25 @@ This service provides supermarket functionality as follows ;
 The application is supplied as a Spring Boot Application, and can be built using maven - the maven pom.xml file is supplied. 
 Some simple REST services are supplied to demonstrate the functions of the application as follows;
 
+- Display the current pricing rules
 http://localhost:8080/pricing
-Display the current pricing rules
 
-http://localhost:8080/setPrice?sku=<sku>&unitPrice=<unitPrice>&specialPrice=<specialPrice>&specialPriceUnits=<specialPriceUnits>
-Set a pricing Rule
+- Set pricing Rules
+—- Set a price without overrides
+http://localhost:8080/setPrice?sku=A&unitPrice=20
 
-http://localhost:8080/scanItem?sku=<sku>
-Scan an Item
+—- Set a price with overrides
+http://localhost:8080/setPrice?sku=A&unitPrice=20&specialPrice=35&specialPriceUnits=2
 
+—- Scan an Item
+http://localhost:8080/scanItem?sku=A
+
+—- Display the current basket (also returned when item scanned)
 http://localhost:8080/status
-Shows the current basket (also returned when item scanned)
 
+—- Check out process. The final total is displayed along with the basket. The session is reset ready for the next customer.
 http://localhost:8080/checkout
-Check out process. The final total is displayed along with the basket. THe session is reset ready for the next customer.
+
  
 Running from command line
 -------------------------
